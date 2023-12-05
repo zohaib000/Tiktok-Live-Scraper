@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %} {% load static %} {% block title %}<title>
+    Terms and conditions</title
+  >{% endblock %} {% block content %}
+  <style>
+    p {
+      line-height: 1.8;
+      font-size: 20px;
+      word-break: keep-all;
+    }
+  
+    img{
+      width: 100%;
+    }
+  </style>
+  <div class="container row mt-5 p-5">
+    <div class="col-md-8 col-12">
+      <p class="animated fadeInDown">
+        We welcome you to Tiktok Beta. By accessing and using our services, you agree to abide by these terms and conditions. Your use of our services is also subject to compliance with applicable laws and regulations. If you do not agree with any part of these terms, we kindly ask that you refrain from using our services. Your continued use of Tiktok Beta constitutes acceptance of these terms and conditions.
+        We're thrilled to have you join us. By using our services, you acknowledge and agree to adhere to our terms and conditions. These terms outline the guidelines for the use of our platform. Please take a moment to review them carefully. Your continued use of Tiktok Beta implies your acceptance of these terms. We encourage you to explore, engage, and enjoy our services responsibly, fostering a positive and vibrant community
+        <p>If you need any help you can <a class="text-primary" href="{% url 'contact' %}">Contact us</a> </p>
+      </p>
+    </div>
+    <div class="col-md-4 col-12">
+      <img class="animated fadeInRight" src="{% static 'assets/terms.jpg' %}" alt="">
+    </div>
+  </div>
+
+
+  {% endblock %}
+  

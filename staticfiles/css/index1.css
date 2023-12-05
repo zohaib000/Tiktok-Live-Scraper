@@ -1,0 +1,556 @@
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+  }
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  [hidden],
+  template {
+    display: none;
+  }
+  a {
+    background-color: transparent;
+  }
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+  b,
+  strong {
+    font-weight: 700;
+  }
+  dfn {
+    font-style: italic;
+  }
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sup {
+    top: -0.5em;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  img {
+    border: 0;
+  }
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  figure {
+    margin: 1em 40px;
+  }
+  hr {
+    box-sizing: content-box;
+    height: 0;
+  }
+  pre {
+    overflow: auto;
+  }
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace;
+    font-size: 1em;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+  }
+  button {
+    overflow: visible;
+  }
+  button,
+  select {
+    text-transform: none;
+  }
+  button,
+  html input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+  button[disabled],
+  html input[disabled] {
+    cursor: default;
+  }
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  input {
+    line-height: normal;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  input[type="search"] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box;
+  }
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+  }
+  legend {
+    border: 0;
+    padding: 0;
+  }
+  textarea {
+    overflow: auto;
+  }
+  optgroup {
+    font-weight: 700;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  td,
+  th,
+  ul {
+    padding: 0;
+  }
+  :root {
+    --color-black: #111;
+    --color-white: #fff;
+    --color-legacy-light: rgb(255 255 255/77%);
+    --color-gray-200: rgba(0, 0, 0, 0.1);
+    --color-gray-300: rgba(0, 0, 0, 0.2);
+    --color-gray-400: rgba(0, 0, 0, 0.4);
+    --color-gray-500: rgba(0, 0, 0, 0.6);
+    --color-gray-600: #111;
+    --color-gray-800: #040404;
+    --color-base-100: #fff;
+    --color-base-120: #fcfcfc;
+    --color-base-140: #f9f9f9;
+    --color-base-200: #f6f5f4;
+    --color-base-250: #f1efee;
+    --color-base-300: #fffdfa;
+    --color-base-400: hsla(0, 0%, 100%, 0.4);
+    --color-base-760: #404040;
+    --color-base-780: #333;
+    --color-base-800: #121212;
+    --color-red-100: #fce9e8;
+    --color-red-200: #ffa8a8;
+    --color-red-300: #ff8080;
+    --color-red-400: #e1645b;
+    --color-red-500: #ea4e43;
+    --color-red-600: #e14133;
+    --color-red-700: #d73223;
+    --color-red-800: #a7271b;
+    --color-red-900: #7d1e17;
+    --color-orange-100: #fce7d9;
+    --color-orange-200: #f7bc97;
+    --color-orange-200: #f5a675;
+    --color-orange-400: #f28e50;
+    --color-orange-500: #f8792a;
+    --color-orange-600: #f8701b;
+    --color-orange-700: #f16209;
+    --color-orange-800: #e75e08;
+    --color-orange-900: #d55c10;
+    --color-yellow-100: #fff6d6;
+    --color-yellow-200: #ffeca8;
+    --color-yellow-300: #ffe175;
+    --color-yellow-400: #f0c266;
+    --color-yellow-500: #fb3;
+    --color-yellow-600: #faa700;
+    --color-yellow-700: #f5a300;
+    --color-yellow-800: #d68f00;
+    --color-yellow-900: #960;
+    --color-teal-100: #e3f2f2;
+    --color-teal-200: #a8d6d5;
+    --color-teal-300: #93cccb;
+    --color-teal-400: #6cc1be;
+    --color-teal-500: #2a9d99;
+    --color-teal-600: #27918d;
+    --color-teal-700: #238582;
+    --color-teal-800: #207976;
+    --color-teal-900: #1e716e;
+    --color-blue-100: #e2ecf3;
+    --color-blue-200: #8accf4;
+    --color-blue-300: #57b5ef;
+    --color-blue-400: #4a98c9;
+    --color-blue-500: #0a85d1;
+    --color-blue-600: #097cc3;
+    --color-blue-700: #086faf;
+    --color-blue-800: #076097;
+    --color-blue-900: #004f80;
+    --color-purple-100: #f0e1f9;
+    --color-purple-200: #d59ef5;
+    --color-purple-300: #cb87f2;
+    --color-purple-400: #bd73e8;
+    --color-purple-500: #9d34da;
+    --color-purple-600: #8f2dc8;
+    --color-purple-700: #8029b3;
+    --color-purple-800: #6e239a;
+    --color-purple-900: #562772;
+    --color-dark-200: #fff;
+    --color-dark-300: hsla(0, 0%, 100%, 0.2);
+    --color-dark-400: #a6a6a6;
+    --color-dark-500: #1a1a1a;
+    --color-dark-600: #000;
+    --spacing-block-s: 20px;
+    --spacing-block-m: 24px;
+    --spacing-block-l: 32px;
+  }
+  @font-face {
+    font-family: inter-var;
+    src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2)
+      format("woff2-variations");
+    font-style: normal;
+    font-weight: 350;
+    font-variation-settings: "wght" 290;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: inter-var;
+    src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2)
+      format("woff2-variations");
+    font-style: normal;
+    font-weight: 430;
+    font-variation-settings: "wght" 430;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: inter-var;
+    src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2)
+      format("woff2-variations");
+    font-style: normal;
+    font-weight: 544;
+    font-variation-settings: "wght" 544;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: inter-var;
+    src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2)
+      format("woff2-variations");
+    font-style: normal;
+    font-weight: 586;
+    font-variation-settings: "wght" 586;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: inter-var;
+    src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2)
+      format("woff2-variations");
+    font-style: normal;
+    font-weight: 669;
+    font-variation-settings: "wght" 669;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Lyon-Text;
+    src: url(https://www.notion.so/_next/static/media/LyonText-Regular-Web.d7bfb4be.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/LyonText-Regular-Web.2cefb6ff.woff)
+        format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Lyon-Text;
+    src: url(https://www.notion.so/_next/static/media/LyonText-RegularItalic-Web.f823179b.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/LyonText-RegularItalic-Web.fa2b7345.woff)
+        format("woff");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Lyon-Text;
+    src: url(https://www.notion.so/_next/static/media/LyonText-Bold-Web.98529464.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/LyonText-Bold-Web.63193098.woff)
+        format("woff");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: Lyon-Text;
+    src: url(https://www.notion.so/_next/static/media/LyonText-BoldItalic-Web.8907ab5f.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/LyonText-BoldItalic-Web.fa5375df.woff)
+        format("woff");
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: iawriter-mono;
+    src: url(https://www.notion.so/_next/static/media/iAWriterMonoS-Regular.bf09337b.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/iAWriterMonoS-Regular.7554f0d4.woff)
+        format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: iawriter-mono;
+    src: url(https://www.notion.so/_next/static/media/iAWriterMonoS-Italic.176fc5a8.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/iAWriterMonoS-Italic.8eb35e9b.woff)
+        format("woff");
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: iawriter-mono;
+    src: url(https://www.notion.so/_next/static/media/iAWriterMonoS-Bold.a8b41a99.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/iAWriterMonoS-Bold.bbe5a5e6.woff)
+        format("woff");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: iawriter-mono;
+    src: url(https://www.notion.so/_next/static/media/iAWriterMonoS-BoldItalic.12c55f12.woff2)
+        format("woff2"),
+      url(https://www.notion.so/_next/static/media/iAWriterMonoS-BoldItalic.215d7c93.woff)
+        format("woff");
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: permanent-marker;
+    src: url(https://www.notion.so/_next/static/media/permanent-marker.18b85f55.woff)
+      format("woff");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .appear-instantly {
+    animation: fadeIn 0ms linear;
+  }
+  .fade-in-fastest {
+    animation: fadeIn 0.15s linear;
+  }
+  @media (prefers-reduced-motion) {
+    .fade-in-fastest {
+      animation-duration: 0ms;
+    }
+  }
+  .fade-in-fast {
+    animation: fadeIn 0.25s ease-in;
+  }
+  @media (prefers-reduced-motion) {
+    .fade-in-fast {
+      animation-duration: 0ms;
+    }
+  }
+  .fade-in-slow {
+    animation: fadeIn 0.5s ease-in;
+  }
+  @media (prefers-reduced-motion) {
+    .fade-in-slow {
+      animation-duration: 0ms;
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  .fade-out-fast {
+    animation: fadeOut 0.25s ease-out;
+  }
+  @media (prefers-reduced-motion) {
+    .fade-out-fast {
+      animation-duration: 0ms;
+    }
+  }
+  .fade-out-slow {
+    animation: fadeOut 0.5s ease-out;
+  }
+  @media (prefers-reduced-motion) {
+    .fade-out-slow {
+      animation-duration: 0ms;
+    }
+  }
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.975);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .scale-in-fast {
+    animation: scaleIn 0.25s ease-in;
+  }
+  @keyframes scaleOut {
+    0% {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.975);
+    }
+  }
+  .scale-out-fast {
+    animation: scaleOut 0.25s ease-out;
+  }
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .pop-in {
+    animation: popIn 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) translateZ(0);
+    }
+    to {
+      transform: rotate(1turn) translateZ(0);
+    }
+  }
+  .loading-spinner {
+    margin: 0 auto;
+    animation: rotate 1s linear infinite;
+    transform-origin: center center;
+    width: 1em;
+    height: 1em;
+    opacity: 0.5;
+    display: block;
+    pointer-events: none;
+  }
+  .animation--paused {
+    animation-play-state: paused;
+  }
+  .animation--running {
+    animation-play-state: running;
+  }
+  body .tf-v1-popup .tf-v1-close {
+    text-indent: -999px;
+    width: 24px;
+    height: 24px;
+    top: -30px;
+    right: -30px;
+    display: block;
+    overflow: hidden;
+    background-image: url(https://www.notion.so/_next/static/media/close.e8f474c6.svg);
+    background-size: cover;
+    opacity: 1;
+    transition: none;
+  }
+  body .tf-v1-popup .tf-v1-close:hover {
+    opacity: 0.75;
+  }
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+  body,
+  html {
+    font-size: 16px;
+    cursor: default;
+  }
+  input[type="submit"],
+  input[type="text"] {
+    -webkit-appearance: none;
+  }
+  svg {
+    fill: currentColor;
+  }
+  :focus:not(:focus-visible) {
+    outline: 0;
+  }
+  ::-moz-placeholder {
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    opacity: 1;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  

@@ -1,0 +1,212 @@
+{% extends 'home/base.html' %} {% load static %} {% block title %}<title>
+  Youtube Views Bot</title
+>{% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/twitter.css' %}" />
+<style>
+  .card {
+    width: 94.7%;
+    margin: 10px;
+  }
+</style>
+
+
+  <!-- ? success message show on profiles creation  -->
+
+  <div
+  id="alertBox"
+    class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+    role="alert"
+    style="display: none;"
+  >
+    <svg
+      class="flex-shrink-0 inline w-4 h-4 mr-3"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+    >
+      <path
+        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+      />
+    </svg>
+    <span class="sr-only">Info</span>
+    <div id="outputMsg"><span class="font-medium">Success! </span></div>
+  </div>
+
+  <!-- ? end success message show on profiles creation  -->
+
+  <div
+    class="mt-4 block max-w-xxl p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+  >
+
+  <div class="container mt-3 py-2">
+    <h1 class="text-[#A5E73A] text-4xl my-4">Scrape Tiktok Live Creators</h1>
+     <div class="relative w-full max-w-xxl max-h-full">
+          <!-- Modal content -->
+          <form
+          id="liveScrapeForm"
+            action=""
+            class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+            method="post"
+          >
+            {% csrf_token %}
+            <!-- Modal header -->
+            <div
+              class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
+            >
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Lets run the Scraper.
+              </h3>
+        
+            </div>
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+              <div class="grid grid-cols-6 gap-6">
+                
+               
+                <div class="col-span-12 sm:col-span-12">
+                  <label
+                    for="total_browsers"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >Enter the keyword for Tiktok Live Streams:</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    name="keyword"
+                    id="keyword"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Sports"
+                  />
+                </div>
+
+      
+                <!-- <div class="col-span-12 sm:col-span-12">
+                  <label
+                    for="urls"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >Enter Proxies line by line: </label
+                  >
+                  <textarea
+                  rows="10"
+                    name="proxies"
+                    id="proxies"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter your Proxies here (line by line)... "
+                    required=""
+                  ></textarea>
+                </div> -->
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div
+              class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
+            >
+              <button
+                type="submit"
+                id="startBtn"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Start
+              </button>
+              <button
+                type="button"
+                id="stopBtn"
+                disabled
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Stop
+              </button>
+            </div>
+          </form>
+        </div>
+  </div>
+  </div>
+
+
+</body>
+
+<script>
+
+  $("#stopBtn").click(function(){
+    
+    // event.preventDefault();
+    var action="stop"
+    rowdata = {
+      action:action,
+      csrfmiddlewaretoken: "{{ csrf_token }}",
+    };
+
+    $.ajax({
+      method: "POST",
+      url: "{% url 'tiktok' %}",
+      data: rowdata,
+      success: function (r) {
+        const msg=r["status"]
+        $("#alertBox").show();
+        $("#outputMsg").text(msg);
+        
+        // scroll page to top
+        window.scroll({top:0,behavior:"smooth"});
+        // disable start button and enable stop button
+        $("#startBtn").attr("disabled",false);
+        $("#stopBtn").attr("disabled",true);
+        // changing start button text and adding animation
+        $("#startBtn").text("Start");
+        $("#startBtn").removeClass("animate-pulse");
+
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  })
+
+  // submitting form using ajax when clicked on startBtn
+  $("#liveScrapeForm").submit(function () {
+    // disable start button and enable stop button
+    $("#startBtn").attr("disabled",true);
+    $("#stopBtn").attr("disabled",false);
+    // changing start button text and adding animation
+    $("#startBtn").text("Scraping...");
+    $("#startBtn").addClass("animate-pulse");
+    
+    event.preventDefault();
+    var keyword = $("#keyword").val();
+    var action="start"
+    rowdata = {
+      keyword: keyword,
+      action:action,
+      csrfmiddlewaretoken: "{{ csrf_token }}",
+    };
+
+    $.ajax({
+      method: "POST",
+      url: "{% url 'tiktok' %}",
+      data: rowdata,
+      success: function (r) {
+        const msg=r["status"]
+        $("#alertBox").show();
+        $("#outputMsg").text(msg);
+        
+        // scroll page to top
+        window.scroll({top:0,behavior:"smooth"});
+        $("#startBtn").attr("disabled",false);
+        $("#stopBtn").attr("disabled",true);
+        //  changing start button text and removing animation
+        $("#startBtn").text("Start");
+        $("#startBtn").removeClass("animate-pulse");
+
+      },
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  });
+
+
+</script>
+
+
+
+{% endblock %}

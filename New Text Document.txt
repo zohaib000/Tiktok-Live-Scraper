@@ -1,0 +1,1 @@
+ssh -i C:\Users\ZOHAIB\.ssh\id_rsa ubuntu@52.90.75.167

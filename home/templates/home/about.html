@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %} {% load static %} {% block title %}<title>
+  About us</title
+>{% endblock %} {% block content %}
+<style>
+  p {
+    line-height: 1.8;
+    font-size: 20px;
+    word-break: keep-all;
+  }
+
+  img{
+    width: 100%;
+  }
+</style>
+<div class="container row mt-5 p-5">
+  <div class="col-md-8 col-12">
+    <p class="animated fadeInDown">
+      Welcome to TikTok Beta, where we specialize in extracting valuable data from TikTok Live streams. Our dedicated team is passionate about providing insightful analytics and relevant information from live sessions on TikTok. We strive to deliver accurate and comprehensive data to assist in market research, trend analysis, and content planning for businesses and creators alike.
+
+      At TikTok Beta, we employ cutting-edge technology and robust tools to scrape, process, and analyze TikTok Live stream data. Our mission is to help our clients harness the power of data to make informed decisions, optimize engagement, and drive growth in the dynamic landscape of social media.
+      
+      Our commitment to excellence, innovation, and client satisfaction drives everything we do. Join us in discovering the insights hidden within TikTok Live streams and unlocking the potential for success in the digital world.
+      <p>If you need any help you can <a class="text-primary" href="{% url 'contact' %}">Contact us</a> </p>
+    </p>
+  </div>
+  <div class="col-md-4 col-12">
+    <img class="animated fadeInRight" src="{% static 'assets/about2.jpg' %}" alt="">
+  </div>
+</div>
+
+{% endblock %}
