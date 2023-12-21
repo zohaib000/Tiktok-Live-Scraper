@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from .models import *
 
-MODELS=[Profiles]
+MODELS=[Status]
 
 for MODEL in MODELS:
     @admin.register(MODEL)

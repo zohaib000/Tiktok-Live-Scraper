@@ -3,8 +3,8 @@ from __future__ import print_function
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
-# Spreadsheet id
-SPREADSHEET_ID = "1GkUjEGQuVWrUpXqiEqh18a6Svo1oBNUT6ilGM31mUlw"
+# Spreadsheet id  
+SPREADSHEET_ID = "1MH-cgMx0cDULIzzUQNmok5p0QqYaPZIbBbo3Z3Ey0LQ"
 
 # Sheet Name and Range to Read
 SHEET_NAME = "Sheet1"
@@ -45,17 +45,47 @@ def get_last_row_number():
 
 
 def write_new_row(data):
-    last_row = get_last_row_number() + 1
-    range_to_write = f"{SHEET_NAME}!A{last_row}:J{last_row}"
+    channel_name = data.get('channel_name')
 
-    value_input_option = 'USER_ENTERED'
-    body = {
-        'values': [data]  # Replace [data] with your new row of data
-    }
+    existing_records = spreadsheet_service.spreadsheets().values().get(
+        spreadsheetId=SPREADSHEET_ID, range=READ_RANGE).execute().get('values', [])
 
-    result = spreadsheet_service.spreadsheets().values().update(
-        spreadsheetId=SPREADSHEET_ID, range=range_to_write,
-        valueInputOption=value_input_option, body=body).execute()
+    # Find the index of the row where the 'Channel Name' matches the new data
+    index_to_update = next((i for i, row in enumerate(existing_records) if row and row[0] == channel_name), None)
 
-    print("Data written to sheet!")
+    if index_to_update is not None:
+        range_to_update = f"{SHEET_NAME}!A{index_to_update+1}:N{index_to_update+1}"
+        value_input_option = 'USER_ENTERED'
+        body = {'values': [list(data.values())]}  # Use list(data.values()) for the new row of data
 
+        result = spreadsheet_service.spreadsheets().values().update(
+            spreadsheetId=SPREADSHEET_ID, range=range_to_update,
+            valueInputOption=value_input_option, body=body).execute()
+
+        print(f"Updated existing record for '{channel_name}'!")
+    else:
+        last_row = len(existing_records) + 1
+        range_to_write = f"{SHEET_NAME}!A{last_row}:N{last_row}"
+        value_input_option = 'USER_ENTERED'
+        body = {'values': [list(data.values())]}  # Use list(data.values()) for the new row of data
+
+        result = spreadsheet_service.spreadsheets().values().update(
+            spreadsheetId=SPREADSHEET_ID, range=range_to_write,
+            valueInputOption=value_input_option, body=body).execute()
+
+        print(f"Added new record for '{channel_name}'!")
+        
+    
+# write_new_row(    data={
+#         "channel_name":"KAMA",
+#         "channel_url":"channel_url",
+#         "followers_count":"follower_count",
+#         "following_count":"following_count",
+#         "likes_count":"likes_count",
+#         "bio":"Bio",
+#         "stream_url":"stream_url",
+#         "concurrent_viewers":"viewers",
+#         "current_date":"current_date",
+#         "current_time":"current_time",
+#         "keyword":"keyword",
+#     })

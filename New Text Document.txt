@@ -1,1 +1,15 @@
-ssh -i C:\Users\ZOHAIB\.ssh\id_rsa ubuntu@52.90.75.167
+2128f6c3-fd01-4994-b65f-b88e18fde674
+
+
+
+import requests
+
+
+URL = "https://elite.finviz.com/export.ashx?[allYourFilters]&auth=2128f6c3-fd01-4994-b65f-b88e18fde674"
+
+response = requests.get(URL)
+
+open("export.csv", "wb").write(response.content)
+
+
+  hadish_nugusse@yahoo.com

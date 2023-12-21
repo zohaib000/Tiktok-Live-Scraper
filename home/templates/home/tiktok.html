@@ -79,6 +79,22 @@
                     placeholder="Sports"
                   />
                 </div>
+             
+                <div class="col-span-12 sm:col-span-12">
+                  <label
+                    for="total_browsers"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >Enter the timeout(in seconds) for each iteration:</label
+                  >
+                  <input
+                    type="number"
+                    required
+                    name="timeout"
+                    id="timeout"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="300"
+                  />
+                </div>
 
       
                 <!-- <div class="col-span-12 sm:col-span-12">
@@ -121,9 +137,36 @@
           </form>
         </div>
   </div>
+  <br style="background-color: aqua;">
   </div>
-
-
+<br>
+  <ul class="grid w-full gap-6 md:grid-cols-2">
+      <li>
+          <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required>
+          <label for="hosting-small" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+              <div class="block">
+                  <div class="w-full text-lg font-semibold">Keyword in Progress</div>
+                  <div class="w-full">{{keyword}}</div>
+              </div>
+              <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+          </label>
+      </li>
+      <li>
+          <input type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
+          <label for="hosting-big" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <div class="block">
+                  <a href="https://docs.google.com/spreadsheets/d/1MH-cgMx0cDULIzzUQNmok5p0QqYaPZIbBbo3Z3Ey0LQ/edit#gid=0" class="no-underline"><div class="w-full text-lg font-semibold">View Google Sheet</div></a>
+                  <div class="w-full">Check the Latest Data Scraped </div>
+              </div>
+              <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+              </svg>
+          </label>
+      </li>
+  </ul>
+  
 </body>
 
 <script>
@@ -173,9 +216,11 @@
     
     event.preventDefault();
     var keyword = $("#keyword").val();
+    var timeout = $("#timeout").val();
     var action="start"
     rowdata = {
       keyword: keyword,
+      timeout: timeout,
       action:action,
       csrfmiddlewaretoken: "{{ csrf_token }}",
     };

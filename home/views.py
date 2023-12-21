@@ -23,7 +23,8 @@ class home(View):
 # chrome profiles handling
 class tiktok(View):
     def get(self,request):
-        return render(request, 'home/tiktok.html')
+        keyword=Status.objects.first().keyword
+        return render(request, 'home/tiktok.html',{"keyword":keyword})
     
     def post(self, request):
         global is_scraping
@@ -32,8 +33,10 @@ class tiktok(View):
             action=request.POST.get("action")
             if action=="start":
                 is_scraping=True
-                keyword=request.POST.get("keyword")
-                searchLive(keyword)
+                keywords=request.POST.get("keyword")
+                keywords=keywords.split(",")
+                timeout=int(request.POST.get("timeout"))
+                searchLive(keywords,timeout,Status)
                 if is_scraping:
                    return JsonResponse({'status': "Data Scraped successfully!"})
             elif action=="stop":
